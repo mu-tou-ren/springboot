@@ -17,11 +17,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class RabbitMqHelloTest {    
     @Autowired
-    private HelloSender helloSender;    
+    public HelloSender helloSender;   
+    
+    @Autowired
+    private HelloReceiver helloReceiver;
    
     @Test
     public void hello() throws Exception {
         helloSender.send();
     }
 
+    @Test
+    public void receiver(){
+    	helloReceiver.process("hello");
+    }
 }
